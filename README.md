@@ -6,13 +6,13 @@ It also contains some example how to use [DOCTest](https://github.com/onqtam/doc
 
 Note: You might have to call `testing::Mock::VerifyAndClearExpectations(mockPtr)` at the end of every `SECTION`.
 
-Start [here](./catch2example.test.cpp).
+Start [here](./catch2-example.test.cpp).
 
 # Remark
 
 This is an experimental repository. It works for me, but not overly tested.
 Feel free to improve it by creating issue or PR.
 
-The integration works with VSCode [Catch2, Google Test and doctest Explorer](https://marketplace.visualstudio.com/items?itemName=matepek.vscode-catch2-test-adapter).
+The integration works with VSCode [Catch2, Google Test and DOCest Explorer](https://marketplace.visualstudio.com/items?itemName=matepek.vscode-catch2-test-adapter).
 
-There is a DOCTest skeleton too, but havent't finished the example yet.
+There is a DOCTest [skeleton](./doctest-example.test.cpp) too.

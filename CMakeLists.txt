@@ -23,4 +23,4 @@ target_link_libraries(catch2-example.test PRIVATE ThirdParty.Catch2 ThirdParty.G
 include("ThirdParty/DOCTest.cmake")
 
 add_executable(doctest-example.test "doctest-example.test.cpp")
-target_link_libraries(doctest-example.test PRIVATE ThirdParty.Catch2 ThirdParty.GoogleMock)
+target_link_libraries(doctest-example.test PRIVATE ThirdParty.DOCTest ThirdParty.GoogleMock)

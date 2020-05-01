@@ -6,31 +6,9 @@
 
 ///
 
-template <class MockT>
-class VerifyAndClearExpectationsGuard {
-  MockT& _mock;
-
- public:
-  VerifyAndClearExpectationsGuard(MockT& mock) : _mock(mock) {}
-
-  ~VerifyAndClearExpectationsGuard() {
-    ::testing::Mock::VerifyAndClearExpectations(&_mock);
-  }
-};
-
-///
-
-template <class... Args>
-std::tuple<VerifyAndClearExpectationsGuard<Args>...>
-MockVerifyAndClearExpectationsGuard(Args&... args) {
-  return std::tuple<VerifyAndClearExpectationsGuard<Args>...>(
-      VerifyAndClearExpectationsGuard<Args>(args)...);
-}
-
-///
-
 int main(int argc, char** argv) {
-  ::testing::InitGoogleMock(&argc, argv);
+  int gmockArgC = 1;
+  ::testing::InitGoogleMock(&gmockArgC, argv);
 
   struct Listener : public testing::EmptyTestEventListener {
     void OnTestPartResult(const testing::TestPartResult& result) override {

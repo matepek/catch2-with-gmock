@@ -2,6 +2,7 @@
 
 // NOTE that next line includes gmock and catch2 headers automatically.
 #include "ThirdParty/Catch2TestWithMainAndGMock.hpp"
+#include "ThirdParty/MockScopeGuard.hpp"
 
 using namespace std;
 
@@ -25,7 +26,7 @@ TEST_CASE("example #1") {
   Foo& foo1 = mock1;
 
   SECTION("success") {
-    auto mockGuard = MockVerifyAndClearExpectationsGuard(mock1, mock2);
+    auto mockGuard = MockScopeGuard(mock1, mock2);
 
     EXPECT_CALL(mock1, Bar).WillOnce(::testing::Return(true));
 
@@ -33,13 +34,13 @@ TEST_CASE("example #1") {
   }
 
   SECTION("failure #1") {
-    auto mockGuard = MockVerifyAndClearExpectationsGuard(mock1, mock2);
+    auto mockGuard = MockScopeGuard(mock1, mock2);
 
     EXPECT_CALL(mock1, Bar).WillOnce(::testing::Return(true));
   }
 
   SECTION("failure #2") {
-    auto mockGuard = MockVerifyAndClearExpectationsGuard(mock1, mock2);
+    auto mockGuard = MockScopeGuard(mock1, mock2);
 
     EXPECT_CALL(mock2, Bar).WillOnce(::testing::Return(true));
   }
