@@ -44,20 +44,8 @@ target_include_directories(
 
 #
 
-add_library(ThirdParty.GoogleMockWithMain INTERFACE)
-
-target_link_libraries(ThirdParty.GoogleMockWithMain
-                      INTERFACE ThirdParty.GoogleMock gmock_main)
-
-#
-
-function(add_gtest TESTNAME)
-
+function(add_gtest_with_main TESTNAME)
   add_executable(${TESTNAME} ${ARGN})
   target_link_libraries(${TESTNAME} PRIVATE ThirdParty.GoogleMockWithMain)
   add_test(NAME "${TESTNAME}" COMMAND "${TESTNAME}")
-  # add_custom_command( TARGET "${TESTNAME}" POST_BUILD COMMAND dsymutil
-  # "${TESTNAME}" COMMAND ${CMAKE_CTEST_COMMAND} -C $<CONFIGURATION> -R
-  # "${TESTNAME}" --output-on-failures )
-
 endfunction()
