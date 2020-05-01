@@ -4,7 +4,8 @@ This is an example how to use [Catch2](https://github.com/catchorg/Catch2) with 
 
 It also contains some example how to use [DOCTest](https://github.com/onqtam/doctest) with GMock.
 
-Note: You might have to call `testing::Mock::VerifyAndClearExpectations(mockPtr)` at the end of every `SECTION`.
+You might have to call `testing::Mock::VerifyAndClearExpectations(mockPtr)` at the end of every `SECTION`.
+Or use [MockScopeGuard.hpp](./ThirdParty/MockScopeGuard.hpp)
 
 Start [here](./catch2-example.test.cpp).
 
